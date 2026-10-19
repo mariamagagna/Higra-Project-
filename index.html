@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#102969" />
+  <meta name="description" content="Higra Project — painel demonstrativo de monitoramento de bombas." />
+  <title>Higra Project | Monitoramento de Bombas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- Sprite de ícones locais: não é necessário instalar bibliotecas. -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon-defs" aria-hidden="true">
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2C9 7 4.5 11.2 4.5 15.3A7.5 7.5 0 0 0 19.5 15.3C19.5 11.2 15 7 12 2Z" fill="currentColor"/><path d="M12 4v18a7.5 7.5 0 0 0 7.5-7.5C19.5 11.2 15 7 12 4Z" fill="#36c6ff"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-pump" viewBox="0 0 24 24"><path d="M3 10h2V7h4V5h8v3h2v3h2v6h-2v2h-3v-2H8v2H5v-2H3z"/><path d="M9 8h6v7H9z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 3h2m-1 0v2" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V11h4v9zm6 0V4h4v16zm6 0v-8h4v8z"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l5 5v14a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1v5h5"/><path d="M8 12h8M8 16h8" fill="none" stroke="white" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5v5c0 2-2 3-2 4h14c0-1-2-2-2-4V8a5 5 0 0 0-5-5zm-2 16a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M10 2h4l.7 2.4 2 .8 2.2-1.1 2.8 2.8-1.1 2.2.8 2L24 12v2l-2.4.7-.8 2 1.1 2.2-2.8 2.8-2.2-1.1-2 .8L14 24h-4l-.7-2.4-2-.8-2.2 1.1-2.8-2.8 1.1-2.2-.8-2L0 14v-2l2.4-.7.8-2-1.1-2.2 2.8-2.8 2.2 1.1 2-.8z" transform="translate(0 -1) scale(1 .95)"/><circle cx="12" cy="12" r="3.1" fill="#17386c"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15.4 15.4 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H4m7 7-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a8 8 0 1 0 1 6M20 3v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 10v7m0-11v1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 2 10 19H2L12 2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 9v5m0 3v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10m-7 6h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 8c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2M2 14c2.5 0 2.5 2 5 2s2.5-2 5-2 2.5 2 5 2 2.5-2 5-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-temp" viewBox="0 0 24 24"><path d="M10 14V5a2 2 0 0 1 4 0v9a5 5 0 1 1-4 0Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 8v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4.2 18a9 9 0 1 1 15.6 0M12 13l5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="13" r="2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-5 3-8 8-8s8 3 8 8"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Menu principal">
+      <a class="brand brand--sidebar" href="#inicio" data-route="inicio" aria-label="Higra Project, início">
+        <span class="brand-mark"><svg><use href="#i-drop"></use></svg></span>
+        <span class="brand-copy"><strong>Higra <em>Project</em></strong><small>MONITORAMENTO DE BOMBAS</small></span>
+      </a>
+      <nav class="side-nav" id="desktop-nav" aria-label="Navegação principal"></nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-connection"><span class="live-dot"></span><span>Sistema demonstrativo</span></div>
+        <small>Higra Project <span id="year"></span></small>
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <a class="brand brand--mobile" href="#inicio" data-route="inicio" aria-label="Higra Project, início">
+          <span class="brand-mark"><svg><use href="#i-drop"></use></svg></span>
+          <span class="brand-copy"><strong>Higra <em>Project</em></strong><small>MONITORAMENTO DE BOMBAS</small></span>
+        </a>
+        <div class="topbar-title"><span class="topbar-eyebrow">PAINEL DE MONITORAMENTO</span><strong id="header-title">Visão geral</strong></div>
+        <label class="search-box" for="global-search">
+          <svg class="icon"><use href="#i-search"></use></svg>
+          <input id="global-search" type="search" placeholder="Buscar bomba, equipamento..." autocomplete="off" aria-label="Buscar bombas" />
+          <span class="shortcut-hint">⌕</span>
+        </label>
+        <div class="top-actions">
+          <button class="icon-button notification-button" type="button" data-route="alertas" title="Ver alertas" aria-label="Ver alertas">
+            <svg class="icon"><use href="#i-bell"></use></svg><span class="notification-count" id="notification-count">1</span>
+          </button>
+          <span class="topbar-separator" aria-hidden="true"></span>
+          <span class="user-avatar"><svg class="icon"><use href="#i-user"></use></svg></span>
+          <span class="user-meta"><strong>Operador</strong><small>Acesso demonstrativo</small></span>
+        </div>
+      </header>
+      <div class="mobile-search-wrap"><label class="search-box search-box--mobile" for="mobile-search"><svg class="icon"><use href="#i-search"></use></svg><input id="mobile-search" type="search" placeholder="Buscar bomba, equipamento..." autocomplete="off" aria-label="Buscar bombas" /></label></div>
+      <main id="app-content" class="page-content" tabindex="-1"></main>
+      <nav class="bottom-nav" id="mobile-nav" aria-label="Navegação móvel"></nav>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
